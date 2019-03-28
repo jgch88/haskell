@@ -28,8 +28,8 @@ multipleOf x (n:ns) = multipleOf x [n] || multipleOf x ns
 -- run x through x `multipleOf` multiples predicate, if it passes 
 -- it is added to the result list
 resultList = [ x | x <- [startRange..endRange], x `multipleOf` multiples ]
--- sum the result list
-sumOfFilteredMultipleList = mathOperator `operateOnResultList` resultList
+-- sum/product the result list
+result = mathOperator `operateOnResultList` resultList
 
 
 operateOnResultList :: (Eq a, Integral a) => String -> [a] -> a 
