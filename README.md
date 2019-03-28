@@ -16,10 +16,11 @@ This installs `ghci`, the interactive prompt.
 * `/=` is not equals
 * `succ 8` is the *successor* of 8, i.e. 9.
 * `doubleMe x = x*2` syntax for *defining a simple function*
-* ```haskell
+*
+```haskell
 doubleSmallNumber x = if x > 100
                       then x
                       else x*2
-
-``` *conditionals* must have *else*, because the if statement must return a value.
+``` 
+*conditionals* must have *else*, because the if statement must return a value.
 * `variable'with'aprostrophe'in'name = "isValid"`
