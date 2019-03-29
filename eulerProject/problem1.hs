@@ -9,6 +9,12 @@ mathOperator = "sum" -- or "product"
 multipleOfN :: (Eq a, Integral a) => a -> a -> Bool
 multipleOfN x n = x `mod` n == 0
 
+operateOnBooleans :: Bool -> Bool -> String -> Bool
+operateOnBooleans bool1 bool2 logicOperator
+  | logicOperator == "||" = bool1 || bool2
+  | logicOperator == "&&" = bool1 && bool2
+  | otherwise = error "bad logic operator, try || or &&"
+
 -- since the user can define any list of multiples, e.g. [3,5] or [3,5,7]
 -- multipleOf takes an Integer x and an Integer list [n1, n2...] and returns the Bool true if x is divisible by any n
 -- e.g. 5 `multipleOf` [3, 5] == True
@@ -21,7 +27,8 @@ multipleOf x (n:[]) = multipleOfN x n
 -- notice that instead of doing [n:ns] we need to do (n:ns) instead, to split it into head/tail for recursion
 -- (n:ns) gives n and [ns], so we need to wrap n in [n], but we don't need to wrap ns as it is already [ns]
 -- beware of list/non-list types causing compiler to crash
-multipleOf x (n:ns) = multipleOf x [n] || multipleOf x ns
+multipleOf x (n:ns) = ((multipleOf x [n]) `operateOnBooleans` (multipleOf x ns)) logicOperator 
+-- infix notation for 3 arguments requires brackets. equivalent to operateOnBooleans (multipleOf x [n]) (multipleOf x ns) logicOperator
 -- the xs in x:xs and ns in n:ns means x's and n's, like plural x and n
 
 -- make a list of [1..99], then pipe each number from the list into x
