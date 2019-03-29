@@ -45,5 +45,3 @@ operateOnResultList operator (n:ns)
   | operator == "sum" = sum (n:ns)
   | operator == "product" = product (n:ns)
   | otherwise = error "bad operator, try sum or product"
-
--- TODO: implement "||" into logic
